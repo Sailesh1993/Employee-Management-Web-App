@@ -1,10 +1,11 @@
 const mongoose = require('mongoose');
+const config = require('./config');
 
 // MongoDB connection URL
 
-const mongoURI = 'mongodb+srv://karkisaileshnep:5mvdNBiQSNqeKqKZ@cluster0.ppayuw0.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
+const mongoURI = ;
 // Connect to MongoDB
-mongoose.connect(mongoURI, {
+mongoose.connect(config.mongoURI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });
