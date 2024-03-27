@@ -1,26 +1,15 @@
 const express = require("express");
-const bodyParser = require("body-parser");
 const cors = require("cors");
+const connectDB = require("./src/config/db")
 
 const app = express();
-
-var corsOptions = {
-    origin: "http://localhost:8081"
-};
-
-app.use(cors(corsOptions));
-
-//parse requests of content-type- applications/json
-app.use(bodyParser.json());
-
-// simple route
-app.get("/", (req, res) => {
-    res.json({message: "Welcome to ERP application"})
-});
-
-// set port, listen for requests
 const PORT = process.env.PORT || 8080;
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}.`)
-});
 
+app.use(cors());
+app.use(express.json());
+
+connectDB();
+
+app.listen(PORT, ()=> {
+    console.log('Server is running on port ${PORT}.');
+});
