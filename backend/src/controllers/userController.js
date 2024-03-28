@@ -1,8 +1,9 @@
 const User = require('../models/user');
 
 // Create a new user
-exports.insertUser = async(req,res) => {
+const createUser = async(req,res) => {
     try {
+        console.log(req.body);
         const { firstname, lastname } = req.body;
         const newUser = new User({ firstname, lastname });
         await newUser.save();
@@ -15,7 +16,7 @@ exports.insertUser = async(req,res) => {
 };
 
 // Get all users
-exports.getAllUsers = async (req, res) => {
+const getAllUsers = async (req, res) => {
     try {
         const users = await User.find({});
         res.status(200).json(users);
@@ -24,3 +25,4 @@ exports.getAllUsers = async (req, res) => {
         res.status(500).json({ error: 'Failed to fetch users' });
     }
 };
+module.exports =  { createUser, getAllUsers };
